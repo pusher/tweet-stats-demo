@@ -29,6 +29,7 @@ h2 {
   flex-direction: column;
   height: 100%;
   padding: 20px;
+  padding-bottom: 45px;
 }
 
 .epoch {
@@ -53,4 +54,23 @@ h2 {
 
 .epoch-theme-dark .epoch .area {
   fill: rgba(255, 255, 255, 0.3) !important;
+}
+
+.footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  height: 45px;
+  font-size: 12px;
+  
+  text-align: center;
+}
+
+.footer img {
+  height: 25px;
+  vertical-align: middle;
+}
+
+.footer a, .footer a:visited {
+  color: #fff;
 }
