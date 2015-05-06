@@ -5,7 +5,11 @@ Pusher.log = function(message) {
 };
 
 var pusher = new Pusher("PUSHER_APP_KEY");
-var apiURL = "http://tweet-stats-api.herokuapp.com";
+var apiURL = "https://tweet-stats-api.herokuapp.com";
+
+function numberWithCommas(x) {
+ return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
 // TODO: Pull active keywords from the API
 $.getJSON(apiURL + "/keywords.json", function(keywords) {
@@ -22,7 +26,11 @@ $.getJSON(apiURL + "/keywords.json", function(keywords) {
   _.each(keywords, function(keyword) {
     // Generate graph header
     var graphHeaderElement = document.createElement("h2");
+    var totalCountElement = document.createElement('span');
+    totalCountElement.className = 'total-count';
+    totalCountElement.id = keyword + '_total';
     graphHeaderElement.innerHTML = keyword;
+    graphHeaderElement.appendChild(totalCountElement);
 
     graphContainer.appendChild(graphHeaderElement);
 
@@ -39,9 +47,9 @@ $.getJSON(apiURL + "/keywords.json", function(keywords) {
   // Create graphs
   _.each(keywords, function(keyword) {
     // Get historic data
-    $.getJSON(apiURL + "/stats/" + keyword + "/24hours.json", function(json) {
+    $.getJSON(apiURL + "/stats/" + encodeURIComponent(keyword) + "/24hours.json", function(json) {
       var graphData = {
-        label: keyword,
+        // label: keyword,
         values: []
       };
 
@@ -83,6 +91,10 @@ $.getJSON(apiURL + "/keywords.json", function(keywords) {
         }];
 
         graph.push(values);
+        
+        // update total
+        var totalEl = document.getElementById(keyword + '_total' );
+        totalEl.innerHTML = numberWithCommas(stat.allTimeTotal);
       }
     });
   });

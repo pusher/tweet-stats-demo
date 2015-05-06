@@ -56,6 +56,18 @@ h2 {
   fill: rgba(255, 255, 255, 0.3) !important;
 }
 
+.total-count {
+  font-size: 14px;
+  vertical-align: top;
+  /* color: white; */
+  /*background-color: blue;*/
+  border-radius: 7px;
+  text-align: center;
+  margin-left: 2px;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
 .footer {
   position: fixed;
   width: 100%;
