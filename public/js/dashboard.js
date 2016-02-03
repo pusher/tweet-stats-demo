@@ -10,7 +10,7 @@ var apiURL = "https://tweet-stats-api.herokuapp.com";
 // an optional filter for displayed keywords
 //  can be a string: 'foo'
 //  or regex: /#\w+/g (will remove all hashtags)
-var filter;
+var filter = '#MWC16';
 
 function numberWithCommas(x) {
  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
