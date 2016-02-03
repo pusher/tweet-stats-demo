@@ -12,6 +12,15 @@ body {
   margin: 0;
 }
 
+h1 {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 30px;
+  font-weight: 400;
+  margin: 10px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
 h2 {
   color: rgba(255, 255, 255, 0.5);
   font-size: 20px;
