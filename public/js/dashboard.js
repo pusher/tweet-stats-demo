@@ -35,6 +35,7 @@ $.getJSON(apiURL + "/keywords.json", function(keywords) {
     totalCountElement.className = 'total-count';
     totalCountElement.id = keyword + '_total';
     graphHeaderElement.innerHTML = filter ? keyword.replace(filter, '') : keyword;
+    graphHeaderElement.contentEditable = 'true';
     graphHeaderElement.appendChild(totalCountElement);
 
     graphContainer.appendChild(graphHeaderElement);
