@@ -7,6 +7,11 @@ Pusher.log = function(message) {
 var pusher = new Pusher("PUSHER_APP_KEY");
 var apiURL = "https://tweet-stats-api.herokuapp.com";
 
+// an optional filter for displayed keywords
+//  can be a string: 'foo'
+//  or regex: /#\w+/g (will remove all hashtags)
+var filter = '#MWC16';
+
 function numberWithCommas(x) {
  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
@@ -29,7 +34,8 @@ $.getJSON(apiURL + "/keywords.json", function(keywords) {
     var totalCountElement = document.createElement('span');
     totalCountElement.className = 'total-count';
     totalCountElement.id = keyword + '_total';
-    graphHeaderElement.innerHTML = keyword;
+    graphHeaderElement.innerHTML = filter ? keyword.replace(filter, '') : keyword;
+    graphHeaderElement.contentEditable = 'true';
     graphHeaderElement.appendChild(totalCountElement);
 
     graphContainer.appendChild(graphHeaderElement);
